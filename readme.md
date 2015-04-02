@@ -55,7 +55,6 @@ $ php artisan serve
 #Todo list
 
   - Improve [AuthorizeMiddleware](app/Http/Middleware/AuthorizeMiddleware.php)
-  - Add permission to administrator after a permission creation
   - Refactor
 
 #You want improve this repo ?

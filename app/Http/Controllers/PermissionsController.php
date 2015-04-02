@@ -1,16 +1,18 @@
 <?php namespace App\Http\Controllers;
 
-use App\Repositories\Criteria\Role\RolesWithPermissions;
 use App\Repositories\PermissionRepository as Permission;
+use App\Repositories\RoleRepository as Role;
 use Illuminate\Http\Request;
 
 class PermissionsController extends Controller {
 
+	private $role;
 	private $permission;
 
-	public function __construct(Permission $permission)
+	public function __construct(Permission $permission, Role $role)
 	{
 		$this->permission = $permission;
+		$this->role = $role;
 	}
 
 	public function index()
@@ -28,7 +30,11 @@ class PermissionsController extends Controller {
 	{
 		$this->validate($request, array('name' => 'required', 'display_name' => 'required'));
 
-		$this->permission->create($request->all());
+		$permission = $this->permission->create($request->all());
+
+		$role = $this->role->findBy('name', 'admin');
+
+		$role->perms()->sync([$permission->id], false);
 
 		return redirect('/permissions');
 	}
