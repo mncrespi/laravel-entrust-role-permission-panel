@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class PermissionsController extends Controller {
 
-	private $role;
 	private $permission;
 
 	public function __construct(Permission $permission)
@@ -29,8 +28,7 @@ class PermissionsController extends Controller {
 	{
 		$this->validate($request, array('name' => 'required', 'display_name' => 'required'));
 
-
-		$permission = $this->permission->create($request->all());
+		$this->permission->create($request->all());
 
 		return redirect('/permissions');
 	}
