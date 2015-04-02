@@ -27,7 +27,7 @@ This repo is just a simple example to use [Entrust](https://github.com/Zizaco/en
 
 ```sh
 $ git clone https://github.com/Rtransat/laravel-entrust-role-permission-panel && cd laravel-entrust-role-permission-panel
-$ composer update
+$ composer install
 ```
 
 **Config your .env file in root project (laravel-entrust-role-permission-panel/.env)**
