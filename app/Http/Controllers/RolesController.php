@@ -4,6 +4,7 @@ use App\Repositories\Criteria\Role\RolesWithPermissions;
 use App\Repositories\RoleRepository as Role;
 use App\Repositories\PermissionRepository as Permission;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class RolesController extends Controller {
 
@@ -45,6 +46,8 @@ class RolesController extends Controller {
 			$role->perms()->sync([]);
 		}
 
+		Flash::success('Role successfully created');
+
 		return redirect('/roles');
 	}
 
@@ -76,6 +79,8 @@ class RolesController extends Controller {
 			$role->perms()->sync([]);
 		}
 
+		Flash::success('Role successfully updated');
+
 		return redirect('/roles');
 	}
 
@@ -85,7 +90,12 @@ class RolesController extends Controller {
 		{
 			abort(403);
 		}
+
 		$this->permission->delete($id);
+
+		Flash::success('Role successfully deleted');
+
+		return redirect('/roles');
 	}
 
 }

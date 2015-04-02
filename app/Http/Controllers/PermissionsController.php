@@ -3,6 +3,7 @@
 use App\Repositories\PermissionRepository as Permission;
 use App\Repositories\RoleRepository as Role;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class PermissionsController extends Controller {
 
@@ -36,6 +37,8 @@ class PermissionsController extends Controller {
 
 		$role->perms()->sync([$permission->id], false);
 
+		Flash::success('Permission successfully created');
+
 		return redirect('/permissions');
 	}
 
@@ -53,12 +56,18 @@ class PermissionsController extends Controller {
 		$permission = $this->permission->find($id);
 		$permission->update($request->all());
 
+		Flash::success('Permission successfully updated');
+
 		return redirect('/permissions');
 	}
 
 	public function destroy($id)
 	{
 		$this->permission->delete($id);
+
+		Flash::success('Permission successfully deleted');
+
+		return redirect('/permissions');
 	}
 
 }

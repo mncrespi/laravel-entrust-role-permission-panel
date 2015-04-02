@@ -5,7 +5,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\Criteria\User\UsersWithRoles;
 use App\Repositories\UserRepository as User;
 use App\Repositories\RoleRepository as Role;
-use Krucas\Notification\Notification;
+use Laracasts\Flash\Flash;
 
 class UsersController extends Controller {
 
@@ -60,6 +60,8 @@ class UsersController extends Controller {
 			$user->roles()->sync([]);
 		}
 
+		Flash::success('User successfully created');
+
 		return redirect('/users');
 	}
 
@@ -100,6 +102,8 @@ class UsersController extends Controller {
 			$user->roles()->sync([]);
 		}
 
+		Flash::success('User successfully updated');
+
 		return redirect('/users');
 	}
 
@@ -109,6 +113,10 @@ class UsersController extends Controller {
 	public function destroy($id)
 	{
 		$this->user->delete($id);
+
+		Flash::success('User successfully deleted');
+
+		return redirect('/users');
 	}
 
 }
