@@ -37,7 +37,7 @@ class RolesController extends Controller {
 
 		$role = $this->role->create($request->all());
 
-		if($request->get('role'))
+		if($request->get('perms'))
 		{
 			$role->perms()->sync($request->get('perms'));
 		}
@@ -91,7 +91,7 @@ class RolesController extends Controller {
 			abort(403);
 		}
 
-		$this->permission->delete($id);
+		$this->role->delete($id);
 
 		Flash::success('Role successfully deleted');
 
