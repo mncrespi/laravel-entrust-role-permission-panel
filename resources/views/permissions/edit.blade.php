@@ -31,6 +31,11 @@
     </div>
 
     <div class="form-group">
+        {!! Form::label('route', 'Route') !!}
+        {!! Form::text('route', null, ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
         {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
     </div>
 

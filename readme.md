@@ -5,7 +5,7 @@ This repo is just a simple example to use [Entrust](https://github.com/Zizaco/en
 #Features
   - Create/Update/Delete Roles, Permissions and Users with REST resources
   - Entrust [migration](database/migrations/2015_03_30_121557_entrust_setup_tables.php#L20) contains a new column named level, it's used to display the checkboxes roles that belongsTo a user roles (see [User.php](app/User.php#L46), used in [RolesPermissionsController.php](app/Http/Controllers/RolesPermissionsController.php#L54) and [RoleLowerOrEqualToCurrentUser.php](app/Repositories/Criteria/Role/RoleLowerOrEqualToCurrentUser.php#L22))
-  - [AuthorizeMiddleware](app/Http/Middleware/AuthorizeMiddleware.php) check the permissions based on route and current user. (This is to improve to check create_MODEL, update_MODEL, show_MODEL, delete_MODEL).
+  - [AuthorizeMiddleware](app/Http/Middleware/AuthorizeMiddleware.php) check the permissions based on route and if current user can "do something". (This is to improve to check request (POST, PATCH, DELETE) and I think it's not the better solution to do that automatically).
   - In the [view](resources/views/roles_permissions/index.blade.php#L27) I check if permission [hasRole](app/Models/Permission.php#L17) to verify if relationships exists in permission_role table
 
 

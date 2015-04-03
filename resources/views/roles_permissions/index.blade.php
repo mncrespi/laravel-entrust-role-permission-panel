@@ -6,11 +6,13 @@
         <thead>
         <tr>
             <th>&nbsp;</th>
+            <th>Route</th>
             @foreach($roles as $role)
                 <th class="text-center">{{ $role->display_name }}</th>
             @endforeach
         </tr>
         <tr>
+            <th>&nbsp;</th>
             <th>&nbsp;</th>
             <th colspan="{{ count($roles) }}">&nbsp;</th>
         </tr>
@@ -19,7 +21,8 @@
 
         @foreach($permissions as $permission)
             <tr>
-                <td>{{ $permission->display_name }}</td>
+                <td width="150">{{ $permission->display_name }}</td>
+                <td><small class="label label-info">{{ $permission->route }}</small></td>
                 @foreach ($roles as $role)
                     <td width="150" class="text-center">
                         @if ($permission->hasRole($role->name) && $role->name == 'admin')

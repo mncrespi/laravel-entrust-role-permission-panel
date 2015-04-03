@@ -29,8 +29,7 @@ class AuthorizeMiddleware {
 
 		foreach($permissions as $permission)
 		{
-			$exploded_perms = explode('_', $permission->name); // manage_(users), manage_(roles), manage_(permissions)
-			if( ! $user->can($permission->name) && $exploded_perms[1] == $uri)
+			if( ! $user->can($permission->name) && $permission->route == $uri)
 			{
 				abort(403);
 			}

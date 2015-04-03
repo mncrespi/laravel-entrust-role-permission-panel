@@ -29,7 +29,7 @@ class PermissionsController extends Controller {
 
 	public function store(Request $request)
 	{
-		$this->validate($request, array('name' => 'required', 'display_name' => 'required'));
+		$this->validate($request, array('name' => 'required', 'display_name' => 'required', 'route' => 'required'));
 
 		$permission = $this->permission->create($request->all());
 
@@ -51,7 +51,7 @@ class PermissionsController extends Controller {
 
 	public function update(Request $request, $id)
 	{
-		$this->validate($request, array('name' => 'required', 'display_name' => 'required'));
+		$this->validate($request, array('name' => 'required', 'display_name' => 'required', 'route' => 'required'));
 
 		$permission = $this->permission->find($id);
 		$permission->update($request->all());
