@@ -37,14 +37,7 @@ class RolesController extends Controller {
 
 		$role = $this->role->create($request->all());
 
-		if($request->get('perms'))
-		{
-			$role->perms()->sync($request->get('perms'));
-		}
-		else
-		{
-			$role->perms()->sync([]);
-		}
+		$role->savePermissions($request->get('perms'));
 
 		Flash::success('Role successfully created');
 
@@ -70,14 +63,7 @@ class RolesController extends Controller {
 		$role = $this->role->find($id);
 		$role->update($request->all());
 
-		if($request->get('permissions'))
-		{
-			$role->perms()->sync($request->get('permissions'));
-		}
-		else
-		{
-			$role->perms()->sync([]);
-		}
+		$role->savePermissions($request->get('perms'));
 
 		Flash::success('Role successfully updated');
 

@@ -37,12 +37,12 @@
     </div>
 
     <div class="form-group">
-        Permissions
+        <label for="">Permissions</label>
         @foreach($permissions as $permission)
             <?php $checked = in_array($permission->id, $rolePerms->lists('id')); ?>
                 <div class="checkbox">
                     <label>
-                        {!! Form::checkbox('permissions[]', $permission->id, $checked) !!} {{ $permission->display_name }}
+                        {!! Form::checkbox('perms[]', $permission->id, $checked) !!} {{ $permission->display_name }}
                     </label>
                 </div>
         @endforeach
